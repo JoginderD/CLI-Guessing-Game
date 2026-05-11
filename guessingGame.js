@@ -1,5 +1,5 @@
-let secretNumber = 20;
-let guess = 20;
+let secretNumber = Math.floor(Math.random() * 20) + 1;
+let guess = 10;
 
 if(guess > secretNumber){
     console.log("Too High");
