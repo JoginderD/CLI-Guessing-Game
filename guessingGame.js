@@ -7,16 +7,21 @@ const rl = readline.createInterface({
 
 let secretNumber = Math.floor(Math.random() * 20) + 1;
 
-rl.question("Enter your guess: ", function(answer) {
-    let guess = Number(answer);
+function askGuess() {
+    rl.question("Enter your guess: ", function(answer) {
+        let guess = Number(answer);
 
-    if (guess > secretNumber) {
-        console.log("Too High");
-    } else if (guess === secretNumber) {
-        console.log("Correct!");
-    } else {
-        console.log("Too Low");
-    }
+        if (guess > secretNumber) {
+            console.log("Too High");
+            askGuess();
+        } else if (guess === secretNumber) {
+            console.log("Correct!");
+            rl.close();
+        } else {
+            console.log("Too Low");
+            askGuess();
+        }
+    });
+}
 
-    rl.close();
-});
+askGuess();
