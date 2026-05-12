@@ -20,7 +20,8 @@ function askGuess() {
             askGuess();
         } else if (guess === secretNumber) {
             console.log("Correct!");
-            rl.close();
+            console.log("You got it in " + count + " attempts.");
+            playAgain();
         } else {
             console.log("Too Low");
             askGuess();
@@ -29,3 +30,15 @@ function askGuess() {
 }
 
 askGuess();
+
+function playAgain () {
+    rl.question("Play Again? (YES/NO): ", function(answer) {
+        if (answer === "YES"){
+            secretNumber = Math.floor(Math.random() * 20) + 1;
+        count = 0;
+        askGuess();
+        } else {
+            rl.close();
+        }
+    });
+}
